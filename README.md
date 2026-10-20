@@ -1,5 +1,7 @@
 # MiSub
 
+> **SubForge fork**: this fork adds a ClashParty-style YAML override for Clash output — see [README-FORK.md](README-FORK.md).
+
 > 中文说明请见 [README-zh.md](README-zh.md)。
 
 <div align="center">
