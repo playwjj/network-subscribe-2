@@ -154,6 +154,7 @@ export const DEFAULT_SETTINGS = {
     },
     // 自定义公开页
     customDnsOverride: '',
+    clashOverrideYaml: '', // fork: ClashParty-style YAML override
     customPage: {
         enabled: false,
         type: 'html',

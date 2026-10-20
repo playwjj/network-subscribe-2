@@ -3,6 +3,7 @@ import { clashFix } from '../../../utils/format-utils.js';
 import { normalizeUnifiedTemplateModel } from '../template-model.js';
 import { DNS_PROXY_GROUP, resolveSafeDnsConfig } from '../safe-dns.js';
 import { applyMihomoChainProxy } from '../mihomo-chain-proxy.js';
+import { applyYamlOverride } from '../yaml-override.js'; // fork: ClashParty-style override
 
 function mapGroupType(type) {
     const normalized = String(type || '')
@@ -259,6 +260,12 @@ export function renderClashFromTemplateModel(model) {
             'subscription-url': normalizedModel.settings.managedConfigUrl || '',
         },
     };
+
+    // Fork addition: apply user YAML override (ClashParty-style deep merge).
+    // Unset/empty override = 100% upstream behavior. Only mentioned keys are touched.
+    if (normalizedModel.settings?.clashOverrideYaml?.trim()) {
+        applyYamlOverride(config, normalizedModel.settings.clashOverrideYaml);
+    }
 
     let yamlStr = yaml.dump(config, {
         indent: 2,

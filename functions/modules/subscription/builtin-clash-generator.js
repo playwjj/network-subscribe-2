@@ -8,6 +8,7 @@ import { urlsToClashProxies } from '../../utils/url-to-clash.js';
 import { getUniqueName } from './name-utils.js';
 import { isMetaCore } from './user-agent-utils.js';
 import { DNS_PROXY_GROUP, resolveSafeDnsConfig } from './safe-dns.js';
+import { applyYamlOverride } from './yaml-override.js'; // fork: ClashParty-style override
 import {
     POLICY_GROUPS,
     RULE_SETS,
@@ -240,6 +241,11 @@ export function generateBuiltinClashConfig(nodeList, options = {}) {
             ...(Object.keys(ruleProviders).length ? { 'rule-providers': ruleProviders } : {}),
             rules: clashRules,
         };
+
+        // Fork addition: apply user YAML override (ClashParty-style deep merge).
+        if (options.clashOverrideYaml && String(options.clashOverrideYaml).trim()) {
+            applyYamlOverride(config, options.clashOverrideYaml);
+        }
 
         let yamlStr = yaml.dump(config, {
             indent: 2,

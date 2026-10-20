@@ -17,6 +17,7 @@ export function createUnifiedTemplateModel(input = {}) {
             skipCertVerify: Boolean(input.settings?.skipCertVerify),
             enableUdp: Boolean(input.settings?.enableUdp),
             customDnsOverride: input.settings?.customDnsOverride || '',
+            clashOverrideYaml: input.settings?.clashOverrideYaml || '', // fork: ClashParty-style YAML override
             dnsMode: input.settings?.dnsMode || 'clean',
         },
         extras: typeof input.extras === 'object' && input.extras !== null ? input.extras : {},

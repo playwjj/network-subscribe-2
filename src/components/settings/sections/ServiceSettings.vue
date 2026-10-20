@@ -1,6 +1,7 @@
 <script setup>
     import TransformCard from './ServiceSettings/TransformCard.vue';
     import DnsOverrideCard from './ServiceSettings/DnsOverrideCard.vue';
+    import YamlOverrideCard from './ServiceSettings/YamlOverrideCard.vue'; // fork
     import TelegramCard from './ServiceSettings/TelegramCard.vue';
     import CronCard from './ServiceSettings/CronCard.vue';
 
@@ -16,6 +17,7 @@
     <div class="space-y-8">
         <TransformCard :settings="settings" />
         <DnsOverrideCard :settings="settings" />
+        <YamlOverrideCard :settings="settings" />
         <TelegramCard :settings="settings" />
         <CronCard :settings="settings" />
     </div>

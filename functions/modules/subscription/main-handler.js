@@ -1135,6 +1135,7 @@ export async function handleMisubRequest(context) {
                         : [],
                     isMeta: isMetaCore(userAgentHeader, url.searchParams),
                     customDnsOverride: config.customDnsOverride || '',
+                    clashOverrideYaml: config.clashOverrideYaml || '', // fork: ClashParty-style YAML override
                     dnsMode:
                         url.searchParams.get('dns-mode') ||
                         url.searchParams.get('dnsMode') ||
@@ -1304,6 +1305,7 @@ export async function handleMisubRequest(context) {
         regionOverrides: Array.isArray(config.regionOverrides) ? config.regionOverrides : [],
         isMeta: isMetaCore(userAgentHeader, url.searchParams),
         customDnsOverride: config.customDnsOverride || '',
+        clashOverrideYaml: config.clashOverrideYaml || '', // fork: ClashParty-style YAML override
         dnsMode:
             url.searchParams.get('dns-mode') ||
             url.searchParams.get('dnsMode') ||
