@@ -1187,6 +1187,16 @@ export const messages = {
             dnsOverrideInvalidJson: 'JSON 格式错误，请检查括号和引号。',
             dnsOverrideInvalidYaml: 'YAML 格式错误，请检查缩进和冒号语法。',
             dnsOverrideInvalidObject: 'DNS 配置必须是一个对象，不能是数组。',
+            yamlOverrideTitle: 'YAML 覆写（Clash）',
+            yamlOverrideDesc: '用 ClashParty 风格的深度合并补丁定制最终 Clash 配置',
+            yamlOverrideActive: '已启用',
+            yamlOverrideLabel: '覆写 YAML',
+            yamlOverridePlaceholder:
+                '# 只写你想改的部分，没写的 key 完全不受影响\n# 普通 key：对象递归合并，简单值直接覆盖\ndns:\n  enable: true\n  nameserver:\n    - https://dns.alidns.com/dns-query\n\n# 数组默认整体替换，用 + 前缀/后缀做前后追加（不影响原有规则）\n+rules:\n  - DOMAIN,example.com,DIRECT\nrules+:\n  - DOMAIN,append.com,PROXY\n\n# 用 ! 强制整体替换某个对象（不合并）\ndns!:\n  enable: false',
+            yamlOverrideHint:
+                '深度合并：只动你写了的 key，MiSub 生成的 proxy-groups / rules 等原样保留。数组用 +rules: 前插、rules+: 追加；直接写 rules: 会整体替换；key 后加 ! 强制替换整个对象。留空则不生效。',
+            yamlOverrideInvalidYaml: 'YAML 格式错误，请检查缩进和冒号语法。',
+            yamlOverrideInvalidObject: '覆写内容必须是一个对象，不能是数组。',
             ruleTemplatesRefreshing: '刷新中…',
             ruleTemplatesRefresh: '刷新',
             ruleTemplatesNew: '新建模板',
@@ -3064,6 +3074,17 @@ export const messages = {
             dnsOverrideInvalidYaml:
                 'Invalid YAML format. Please check indentation and colon syntax.',
             dnsOverrideInvalidObject: 'DNS config must be an object, not an array.',
+            yamlOverrideTitle: 'YAML Override (Clash)',
+            yamlOverrideDesc: 'Patch the final Clash config with ClashParty-style deep merge',
+            yamlOverrideActive: 'Active',
+            yamlOverrideLabel: 'Override YAML',
+            yamlOverridePlaceholder:
+                '# Only write what you want to change; untouched keys stay as-is\n# Plain keys: objects merge recursively, scalars overwrite\ndns:\n  enable: true\n\n# Arrays are replaced by default; use + prefix/suffix to prepend/append\n+rules:\n  - DOMAIN,example.com,DIRECT\n\n# Suffix a key with ! to force-replace the whole object\ndns!:\n  enable: false',
+            yamlOverrideHint:
+                'Deep merge: only the keys you write are touched; MiSub-generated proxy-groups / rules stay intact. Use +rules: to prepend, rules+: to append; a plain rules: key replaces the whole array; suffix ! to force-replace an object. Leave empty to disable.',
+            yamlOverrideInvalidYaml:
+                'Invalid YAML format. Please check indentation and colon syntax.',
+            yamlOverrideInvalidObject: 'Override content must be an object, not an array.',
             ruleTemplatesRefreshing: 'Refreshing…',
             ruleTemplatesRefresh: 'Refresh',
             ruleTemplatesNew: 'New template',
